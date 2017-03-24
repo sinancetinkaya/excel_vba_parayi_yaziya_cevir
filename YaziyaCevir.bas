@@ -5,34 +5,26 @@ Function YaziyaCevir(sayi)
     Array("", "Yüz", "İkiYüz", "ÜçYüz", "DörtYüz", "BeşYüz", "AltıYüz", "YediYüz", "SekizYüz", "DokuzYüz") _
     )
     suffixes = Array("", "Bin", "Milyon", "Milyar", "Trilyon", "Katrilyon")
+    para_birimi = Array("TL", "KRŞ")
     
-    sayi = split(CStr(sayi), Application.DecimalSeparator)
-    tamsayi = Val(sayi(0))
-    kesir = Val(sayi(1))
+    splitted_numbers = split(CStr(sayi), Application.DecimalSeparator)
     result = ""
     gbs = 3 'grup basamak sayısı
     
-    For x = 1 To 2
-        If x = 1 Then
-            sayi = tamsayi
-            birim = "TL"
-        Else
-            sayi = kesir
-            birim = "KRŞ"
-        End If
+    For x = 0 To 1
         
-        If sayi > 0 Then
-            my_string = CStr(sayi)
+        If Val(splitted_numbers(x)) > 0 Then
+            str_number = splitted_numbers(x)
             suffix = 0
             yaziyla = ""
             
-            While Len(my_string) > 0
-                If Len(my_string) > gbs Then
-                    grup = Right(my_string, gbs)
-                    my_string = Left(my_string, Len(my_string) - gbs)
+            While Len(str_number) > 0
+                If Len(str_number) > gbs Then
+                    grup = Right(str_number, gbs)
+                    str_number = Left(str_number, Len(str_number) - gbs)
                 Else
-                    grup = my_string
-                    my_string = ""
+                    grup = str_number
+                    str_number = ""
                 End If
                 
                 yazi = ""
@@ -48,7 +40,7 @@ Function YaziyaCevir(sayi)
                 suffix = suffix + 1
                 yaziyla = yazi + yaziyla
             Wend
-            result = result + yaziyla + birim
+            result = result + yaziyla + para_birimi(x)
         End If
     Next x
     
@@ -56,10 +48,10 @@ Function YaziyaCevir(sayi)
 End Function
 
 
-Function parse(my_string)
-    ReDim buff(Len(my_string) - 1)
-    For idx = 1 To Len(my_string)
-        buff(idx - 1) = Mid$(my_string, idx, 1)
+Function parse(str_number)
+    ReDim buff(Len(str_number) - 1)
+    For idx = 1 To Len(str_number)
+        buff(idx - 1) = Mid$(str_number, idx, 1)
     Next
     parse = buff
 End Function
