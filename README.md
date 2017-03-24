@@ -11,4 +11,5 @@ Kurulum:
 =YaziyaCevir(123456789,99)
 
 Sonuç:
-YüzYirmiÜçMilyonDörtYüzElliAltıBinYediYüzSeksenDokuzTLDoksanSekizKRŞ
+YüzYirmiÜçMilyonDörtYüzElliAltıBinYediYüzSeksenDokuzTLDoksanDokuzKRŞ
+
