@@ -6,9 +6,9 @@ Function YaziyaCevir(sayi)
     )
     suffixes = Array("", "Bin", "Milyon", "Milyar", "Trilyon", "Katrilyon")
     
-    tamsayi = Int(sayi)
-    kesir = sayi - tamsayi
-    
+    sayi = split(CStr(sayi), Application.DecimalSeparator)
+    tamsayi = Val(sayi(0))
+    kesir = Val(sayi(1))
     result = ""
     gbs = 3 'grup basamak sayısı
     
@@ -17,7 +17,7 @@ Function YaziyaCevir(sayi)
             sayi = tamsayi
             birim = "TL"
         Else
-            sayi = Int(kesir * 100)
+            sayi = kesir
             birim = "KRŞ"
         End If
         
@@ -36,7 +36,7 @@ Function YaziyaCevir(sayi)
                 End If
                 
                 yazi = ""
-                sayilar = split(grup)
+                sayilar = parse(grup)
                 sayilar_idx = UBound(sayilar)
                 For i = 0 To UBound(sayilar)
                     sayi = Val(sayilar(i))
@@ -56,11 +56,11 @@ Function YaziyaCevir(sayi)
 End Function
 
 
-Function split(my_string)
+Function parse(my_string)
     ReDim buff(Len(my_string) - 1)
     For idx = 1 To Len(my_string)
         buff(idx - 1) = Mid$(my_string, idx, 1)
     Next
-    split = buff
+    parse = buff
 End Function
 
