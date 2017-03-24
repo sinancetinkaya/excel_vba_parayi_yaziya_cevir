@@ -8,14 +8,17 @@ Function YaziyaCevir(sayi)
     para_birimi = Array("TL", "KRŞ")
     
     splitted_numbers = split(CStr(sayi), Application.DecimalSeparator)
-    
-    ' Eğer kuruş hanesi tek sayı ise sonuna 0 ekle. 1,2 ise 1,20 yap
-    If Len(splitted_numbers(1)) = 1 Then splitted_numbers(1) = splitted_numbers(1) + "0"
+    If UBound(splitted_numbers) > 0 Then
+        ' Eğer kuruş hanesi tek sayı ise sonuna 0 ekle. 1,2 ise 1,20 yap
+        If Len(splitted_numbers(1)) = 1 Then splitted_numbers(1) = splitted_numbers(1) + "0"
+        ' Eğer kuruş hanesi 2 sayıdan fazla ise sadece ilk 2 sayıyı al
+        If Len(splitted_numbers(1)) > 2 Then splitted_numbers(1) = Left(splitted_numbers(1), 2)
+    End If
     
     result = ""
     gbs = 3 'grup basamak sayısı
     
-    For x = 0 To 1
+    For x = LBound(splitted_numbers) To UBound(splitted_numbers)
         
         If Val(splitted_numbers(x)) > 0 Then
             str_number = splitted_numbers(x)
