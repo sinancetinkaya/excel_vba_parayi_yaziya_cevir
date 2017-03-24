@@ -11,7 +11,7 @@ Function YaziyaCevir(sayi)
     If UBound(splitted_numbers) > 0 Then
         ' Eğer kuruş hanesi tek rakam ise sonuna 0 ekle. 1,2 ise 1,20 yap
         If Len(splitted_numbers(1)) = 1 Then splitted_numbers(1) = splitted_numbers(1) + "0"
-        ' Eğer kuruş hanesi 2 rakamdan fazla ise sadece ilk 2 sayıyı al
+        ' Eğer kuruş hanesi 2 rakamdan fazla ise sadece ilk 2 rakamı al
         If Len(splitted_numbers(1)) > 2 Then splitted_numbers(1) = Left(splitted_numbers(1), 2)
     End If
     
