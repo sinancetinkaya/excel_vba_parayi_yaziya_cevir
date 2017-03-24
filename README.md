@@ -6,3 +6,9 @@ Kurulum:
 2. Insert / Module
 3. YaziyaCevir.bas içindeki kodu yapıştırın
 4. Örnek B2 hücresindeki rakamı yazıya çevirmek için =YaziyaCevir(B2)
+
+
+=YaziyaCevir(123456789,99)
+
+Sonuç:
+YüzYirmiÜçMilyonDörtYüzElliAltıBinYediYüzSeksenDokuzTLDoksanSekizKRŞ
